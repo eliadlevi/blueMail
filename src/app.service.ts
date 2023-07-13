@@ -64,9 +64,7 @@ export class AppService {
   private isWining(): boolean {
     const isVerticalOrHorizontalWin = this.isVerticalOrHorizontalWin();
 
-    return isVerticalOrHorizontalWin
-      ? isVerticalOrHorizontalWin
-      : this.isDiagonallyWin();
+    return isVerticalOrHorizontalWin;
   }
 
   private isVerticalOrHorizontalWin(): boolean {
@@ -112,8 +110,11 @@ export class AppService {
 
       // check second way across
       if (
-        (this.board[this.boardSize - index - 1][this.boardSize - index - 1] !==
-          this.board[this.boardSize - index - 2][this.boardSize - index - 2] &&
+        (this.boardSize - index - 2 > 0 &&
+          this.board[this.boardSize - index - 1][this.boardSize - index - 1] !==
+            this.board[this.boardSize - index - 2][
+              this.boardSize - index - 2
+            ] &&
           secndeDiagonallyWin) ||
         this.isEmptyCell(index, index)
       ) {
