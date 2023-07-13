@@ -63,8 +63,12 @@ export class AppService {
 
   private isWining(): boolean {
     const isVerticalOrHorizontalWin = this.isVerticalOrHorizontalWin();
+    // if the game is won then it is locking the game
+    this.lockedSystem = isVerticalOrHorizontalWin
+      ? isVerticalOrHorizontalWin
+      : this.isDiagonallyWin();
 
-    return isVerticalOrHorizontalWin;
+    return this.lockedSystem;
   }
 
   private isVerticalOrHorizontalWin(): boolean {
