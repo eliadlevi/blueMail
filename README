@@ -1,0 +1,24 @@
+steps to running the game
+
+1. install the nest cli with the commend
+   npm i -g @nestjs/cli
+2. install all the needed packages
+3. npm start at the xoxo folder
+
+the server of the game will run our game will conduct with postman
+
+1. go the route localhost:3000/getBoard
+   and run a get request with no parameters
+   it would return you the board
+
+2. then make a post request to route localhost:3000/move
+   with the location you want your piece to be
+   the request body would look like this in the raw json:
+   {
+   "x": 0,
+   "y": 2
+   }
+
+it will switch players automatically and will write you what player is the current turn
+
+to restart the game when finished send empty post request to localhost:3000/restartGame
