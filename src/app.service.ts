@@ -35,6 +35,9 @@ export class AppService {
         if (this.isWining()) {
           return `${this.currentTurn} WON!!!`;
         }
+        if (this.boardIsFull()) {
+          return 'game ended in tie';
+        }
         this.changeCurrentTurn();
 
         return `turn of ${this.currentTurn}`;
@@ -143,5 +146,14 @@ export class AppService {
 
   private isEmptyCell(x: number, y: number) {
     return this.board[x][y] === '*';
+  }
+  private boardIsFull() {
+    for (let xIndex = 0; xIndex < this.boardSize; xIndex++) {
+      if (this.board[xIndex].some((currentCell) => currentCell === '*')) {
+        return false;
+      }
+    }
+    this.lockedSystem = true;
+    return true;
   }
 }
