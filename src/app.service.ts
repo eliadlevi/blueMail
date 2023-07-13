@@ -46,7 +46,19 @@ export class AppService {
     }
   }
 
-  public restartGame() {}
+  public restartGame() {
+    this.lockedSystem = false;
+    this.board = [];
+    for (let xIndex = 0; xIndex < this.boardSize; xIndex++) {
+      let yPieces: boardPieceValue[] = [];
+      for (let yIndex = 0; yIndex < this.boardSize; yIndex++) {
+        yPieces.push('*');
+      }
+      this.board.push(yPieces);
+    }
+    this.currentTurn = this.startingPlayer;
+    return `Game restarted, it is ${this.currentTurn} turn`;
+  }
 
   private isValidMove(x: number, y: number): boolean {
     const requstedCell = this.board[x][y];
