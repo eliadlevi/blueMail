@@ -15,4 +15,9 @@ export class AppController {
   public move(@Body() body: { x: number; y: number }): string {
     return this.appService.move(body.x, body.y);
   }
+
+  @Post('/restartGame')
+  public restartGame(): string {
+    return this.appService.restartGame();
+  }
 }
